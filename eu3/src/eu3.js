@@ -1,5 +1,3 @@
-const chalk = require("chalk")
-
 function primesLimit(n){
   let isPrimes = []
   let primes = []

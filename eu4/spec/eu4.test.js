@@ -5,20 +5,6 @@ describe("eu-4 - largest palindrome product", () => {
   })
 }) 
 
-describe("createLargestCandidate", () => {
-  test("998001", () => {
-    expect(primes.createLargestCandidate(998001)).toBe(997799)
-  })
-  
-  test("9801", () => {
-    expect(primes.createLargestCandidate(9801)).toBe(9779)
-  })
-
-  test("99980001", () => {
-    expect(primes.createLargestCandidate(99980001)).toBe(99977999);
-  });
-})
-
 describe("nextLowestCandidate", () => {
   test("989989", () => {
     expect(primes.nextLowestCandidate(989989)).toBe(988889)

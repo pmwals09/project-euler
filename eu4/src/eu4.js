@@ -1,30 +1,38 @@
 function largestPalindromeProduct(digits){
   const minDigits = 10 ** (digits - 1)
   const maxDigits = (10 ** digits) - 1
-  // find the largest candidate
-  // iterate backward to find an even division from maxDigits until the result.length > digits
-  // iterate candidate down
-  const largestPalindromeCandidate = createLargestCandidate(maxDigits ** 2)
-}
-
-function createLargestCandidate(n){
-  const numArr = n.toString().split('').map(ea => parseInt(ea))
-  if(numArr[0] === numArr[numArr.length - 1]){
-    return parseInt(numArr.join(''))
-  } else {
-    numArr[numArr.length - 1] = numArr[0]
-    numArr.forEach((num, i) => {
-      if(i !==0 && i !== numArr.length - 1){
-        numArr[i] = numArr
+  let palindromeCandidate = maxDigits ** 2
+  let success = false
+  while(!success && palindromeCandidate > 0){
+    palindromeCandidate = nextLowestCandidate(palindromeCandidate)
+    for(let i = maxDigits; i > minDigits; i--){
+      if(palindromeCandidate / i > maxDigits){
+        break
       }
-    })
+      if(palindromeCandidate % i === 0){
+        success = true
+        return palindromeCandidate
+      }
+    }
   }
 }
 
-function nextLowestCandidate(n) {}
+function nextLowestCandidate(n) {
+  const stringNum = n.toString()
+  if(stringNum.length % 2 === 0){
+    const frontHalf = stringNum.slice(0, stringNum.length / 2)
+    const newFrontHalf = (parseInt(frontHalf) - 1).toString()
+    const backHalf = newFrontHalf.split('').reverse().join('')
+    return parseInt(`${newFrontHalf}${backHalf}`)
+  } else {
+    const frontHalf = stringNum.slice(0, Math.ceil(stringNum.length / 2))
+    const newFrontHalf = (parseInt(frontHalf) - 1).toString()
+    const backHalf = newFrontHalf.slice(0, -2).split('').reverse().join('')
+    return parseInt(`${newFrontHalf}${backHalf}`)
+  }
+}
 
 module.exports = {
   largestPalindromeProduct,
-  createLargestCandidate,
   nextLowestCandidate,
 };
