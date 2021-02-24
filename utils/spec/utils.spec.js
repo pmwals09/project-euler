@@ -16,4 +16,34 @@ describe("utils", () => {
       expect(utils.populateArray(-10, -1)).toEqual([-10,-9,-8,-7,-6,-5,-4,-3,-2,-1])
     })
   })
+
+  describe("primeSieve", () => {
+    test("10", () => {
+      expect(utils.primeSieve(10)).toEqual([2, 3, 5, 7])
+    })
+    test("11", () => {
+      expect(utils.primeSieve(11)).toEqual([2, 3, 5, 7, 11])
+    })
+    test("20", () => {
+      expect(utils.primeSieve(20)).toEqual([2, 3, 5, 7, 11, 13, 17, 19])
+    })
+  })
+
+  describe("isPrime", () => {
+    test("2", () => {
+      expect(utils.isPrime(2)).toBe(true)
+    })
+    test("3", () => {
+      expect(utils.isPrime(3)).toBe(true)
+    })
+    test("9", () => {
+      expect(utils.isPrime(9)).toBe(false)
+    })
+    test("10", () => {
+      expect(utils.isPrime(10)).toBe(false)
+    })
+    test("11", () => {
+      expect(utils.isPrime(11)).toBe(true)
+    })
+  })
 })
