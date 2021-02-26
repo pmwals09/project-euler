@@ -1,23 +1,14 @@
 function pythagoreanTripletProd(sum){
-  
+  for(let i = 1; i < sum; i++){
+    for(let j = i+1; j < sum; j++){
+      let a = j**2 - i**2
+      let b = 2*i*j
+      let c = j**2 + i**2
+      if(a**2 + b**2 === c**2 && a + b + c === sum){
+        return a * b * c
+      }
+    }
+  }
 }
 
 module.exports = {pythagoreanTripletProd}
-
-/**
- * let m, n, k
- * a = k * (m**2 - n**2)
- * b = k * (2 * m * n)
- * c = k * (m**2 + n**2)
- * 
- * m, n, k > 0
- * m > n
- * 
- * 
- * a**2 + b**2 = c**2
- * a + b + c = 12
- * 
- * c**2 = a**2 + b**2
- * c = 12 - a - b
- * 
- */
