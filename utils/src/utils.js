@@ -33,4 +33,18 @@ function isPrime(n){
     return true;
 }
 
-module.exports = {populateArray, primeSieve, isPrime}
+function primeFactorization(n) {
+  const primeCandidates = primeSieve(n);
+  let remainder = n;
+  let factorization = {};
+  for (let i = 0; i < primeCandidates.length; i++) {
+    while (remainder % primeCandidates[i] === 0) {
+      factorization[primeCandidates[i]] ? factorization[primeCandidates[i]]++ : (factorization[primeCandidates[i]] = 1);
+      remainder = remainder / primeCandidates[i];
+    }
+  }
+
+  return factorization;
+}
+
+module.exports = { populateArray, primeSieve, isPrime, primeFactorization };

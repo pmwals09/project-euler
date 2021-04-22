@@ -46,4 +46,16 @@ describe("utils", () => {
       expect(utils.isPrime(11)).toBe(true)
     })
   })
+
+  describe("primeFactorization", () => {
+    test("10", () => {
+      expect(utils.primeFactorization(10)).toEqual({ 2: 1, 5: 1 });
+    });
+    test("13", () => {
+      expect(utils.primeFactorization(13)).toEqual({ 13: 1 });
+    });
+    test("2520", () => {
+      expect(utils.primeFactorization(2520)).toEqual({ 2: 3, 3: 2, 5: 1, 7: 1 });
+    });
+  })
 })
